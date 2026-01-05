@@ -7,10 +7,9 @@ Here we have few queries to get data for different scenarios. We have below four
 -  SKILLS_DIM - It has skill_id,skills,type
 - COMPANY_DIM - It has company_id, company_name
 
+## Query 1:
 
-Query 1:
-
-Fetches data for ' which location has top paying for data analyst' using below joins with 'Group By'
+Fetches data for ***' which location has top paying for data analyst'*** using below joins with 'Group By'
 
 ```
 FROM
