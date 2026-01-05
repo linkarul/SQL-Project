@@ -13,11 +13,17 @@ Query 1:
 Fetches data for ' which country has top paying for data analyst' using below joins
 
 'FROM
-     JOB_POSTINGS_FACT 
+     JOB_POSTINGS_FACT
+     
 GROUP BY    
       JOB_LOCATION
 HAVING JOB_TITLE_SHORT = 'Data Analyst'
 AND SALARY_YEAR_AVG IS NOT NULL
 AND JOB_LOCATION <> 'Anywhere'
+
 ORDER BY AVG_SALARY DESC
 LIMIT 10'
+
+And the result is
+
+<img width="1800" height="579" alt="Screenshot 2026-01-05 230254" src="https://github.com/user-attachments/assets/00bc62ff-fe4f-4f5b-b647-df9f777811f4" />
