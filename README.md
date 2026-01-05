@@ -29,9 +29,9 @@ And the result is
 
 <img width="1800" height="579" alt="Screenshot 2026-01-05 230254" src="https://github.com/user-attachments/assets/00bc62ff-fe4f-4f5b-b647-df9f777811f4" />
 
-Query 2:
+## Query 2:
 
-Fetches data for 'which Company pays the most in top paying country for data analyst' using CTE. We get the company id detail in temp table TOP_PAYING_COUNTRY and then using COMPANY_DIM table we get the company name for top 10.
+Fetches data for ***'which Company pays the most in top paying country for data analyst'*** using CTE. We get the company id detail in temp table TOP_PAYING_COUNTRY and then using COMPANY_DIM table we get the company name for top 10.
 
 ```
 WITH TOP_PAYING_COUNTRY AS
@@ -64,4 +64,30 @@ LIMIT 10
 And the result is
 
 <img width="1805" height="540" alt="Screenshot 2026-01-05 231359" src="https://github.com/user-attachments/assets/8c00bc09-1daf-4c77-a985-3fc892699f64" />
+
+## Query 3:
+
+Fetches data for ***'Which skills are related to 'Data Analys'*** using subquery. We get the skill detail for 'Data Analyst' in subquery and then using SKILL_DIM table we get the Skills name .
+
+```
+SELECT 
+       SD.SKILLS   
+     
+FROM
+     (SELECT DISTINCT
+     JP.JOB_TITLE_SHORT,
+     JP.JOB_ID,
+     SJ.SKILL_ID
+FROM JOB_POSTINGS_FACT JP
+INNER JOIN SKILLS_JOB_DIM SJ
+ON JP.JOB_ID = SJ.JOB_ID
+AND JP.JOB_TITLE_SHORT = 'Data Analyst' ) AS SK
+INNER JOIN SKILLS_DIM SD
+ON SD.SKILL_ID = SK.SKILL_ID
+GROUP BY SD.SKILLS
+ORDER BY SKILLS 
+```
+
+And the result is
+<img width="269" height="477" alt="Screenshot 2026-01-05 234223" src="https://github.com/user-attachments/assets/02722242-894b-40d5-b980-d851044ada39" />
 
