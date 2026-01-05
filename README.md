@@ -3,9 +3,9 @@ Here we have few queries to get data for different scenarios. We have below four
 
 
 -  JOB_POSTINGS_FACT - It has columns like Job_id, company_id, job_title_short,job_title,job_location,job_via,job_posted_date,salary_year_avg,salary_hour_avg
-- ** SKILLS_JOB_DIM- It has columns like job_id,skill_id
-- ** SKILLS_DIM - It has skill_id,skills,type
-- ** COMPANY_DIM - It has company_id, company_name
+-  SKILLS_JOB_DIM- It has columns like job_id,skill_id
+-  SKILLS_DIM - It has skill_id,skills,type
+- COMPANY_DIM - It has company_id, company_name
 
 
 Query 1:
