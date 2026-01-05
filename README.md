@@ -12,7 +12,8 @@ Query 1:
 
 Fetches data for ' which location has top paying for data analyst' using below joins with 'Group By'
 
-'FROM
+'''
+FROM
      JOB_POSTINGS_FACT
      
 GROUP BY    
@@ -22,7 +23,8 @@ AND SALARY_YEAR_AVG IS NOT NULL
 AND JOB_LOCATION <> 'Anywhere'
 
 ORDER BY AVG_SALARY DESC
-LIMIT 10'
+LIMIT 10
+'''
 
 And the result is
 
@@ -32,8 +34,8 @@ Query 2:
 
 Fetches data for 'which Company pays the most in top paying country for data analyst' using CTE. We get the company id detail in temp table TOP_PAYING_COUNTRY and then using COMPANY_DIM table we get the company name for top 10.
 
-
-'WITH TOP_PAYING_COUNTRY AS
+'''
+WITH TOP_PAYING_COUNTRY AS
 (
 SELECT     
      COMPANY_ID,
@@ -57,7 +59,8 @@ FROM  TOP_PAYING_COUNTRY TP
 INNER JOIN COMPANY_DIM CD
 ON TP.COMPANY_ID = CD.COMPANY_ID
 ORDER BY SALARY DESC
-LIMIT 10'
+LIMIT 10
+'''
 
 And the result is
 
