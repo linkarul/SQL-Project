@@ -91,3 +91,29 @@ ORDER BY SKILLS
 And the result is
 <img width="269" height="477" alt="Screenshot 2026-01-05 234223" src="https://github.com/user-attachments/assets/02722242-894b-40d5-b980-d851044ada39" />
 
+
+## Query 4:
+
+Fetches data for ***'which top skills related to salary'*** using GROUP BY. We get the skill detail for 'Data Analyst' along with their salary details.
+
+```
+SELECT 
+      SD.SKILLS,
+      ROUND(AVG(JP.SALARY_YEAR_AVG),0) AS AVG_SALARY
+FROM JOB_POSTINGS_FACT JP
+INNER JOIN SKILLS_JOB_DIM SJ
+ON JP.JOB_ID = SJ.JOB_ID
+INNER JOIN SKILLS_DIM SD
+ON SD.SKILL_ID = SJ.SKILL_ID
+WHERE 
+     JP.JOB_TITLE_SHORT = 'Data Analyst'
+   AND JP.SALARY_YEAR_AVG IS NOT NULL
+   AND JP.JOB_WORK_FROM_HOME = True
+GROUP BY 
+  SD.SKILLS
+ORDER BY AVG_SALARY DESC
+```
+
+And the result is
+
+<img width="1474" height="473" alt="Screenshot 2026-01-05 234940" src="https://github.com/user-attachments/assets/650ebc71-2d66-4fa9-a939-287338fd3179" />
