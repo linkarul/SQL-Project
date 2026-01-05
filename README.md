@@ -117,3 +117,31 @@ ORDER BY AVG_SALARY DESC
 And the result is
 
 <img width="1474" height="473" alt="Screenshot 2026-01-05 234940" src="https://github.com/user-attachments/assets/650ebc71-2d66-4fa9-a939-287338fd3179" />
+
+
+## Query 5:
+
+Fetches data for ***'Which company has high demand and more salary'*** using GROUP BY. We get the company,demand count and salary details for 'Data Analyst'.
+
+```
+SELECT
+  CD.COMPANY_ID,
+  CD.NAME,
+  COUNT(JP.JOB_ID) AS DEMAND_COUNT,
+  ROUND(AVG(JP.SALARY_YEAR_AVG),0) AS HIGH_SALARY
+FROM JOB_POSTINGS_FACT JP
+INNER JOIN COMPANY_DIM CD
+ON JP.COMPANY_ID = CD.COMPANY_ID
+AND JP.JOB_TITLE_SHORT = 'Data Analyst'
+AND JP.SALARY_YEAR_AVG IS NOT NULL
+GROUP BY CD.COMPANY_ID
+HAVING COUNT(JP.JOB_ID) > 10
+ORDER BY
+HIGH_SALARY DESC,
+DEMAND_COUNT DESC
+
+```
+
+And the result is
+
+<img width="1720" height="423" alt="Screenshot 2026-01-05 235356" src="https://github.com/user-attachments/assets/16354b2c-d390-4c42-a6ea-1e0a6eeaf440" />
